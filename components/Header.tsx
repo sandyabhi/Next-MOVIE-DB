@@ -7,17 +7,18 @@ type Props = {
 };
 
 const Header = ({ setQuery }: Props) => (
-  <div className="stick flex top-0 z-40 w-full h-20 bg-gradient-to-t from-slate-900 to-black">
+  <div className="stick flex top-0 z-40 w-full h-20 bg-gradient-to-r from-slate-900 to-black">
     <div className="flex justify-between w-full h-full max-w-7xl m-auto items-center px-4">
       <Link href="/">
         <div className="flex items-center cursor-pointer">
-          <div className="invisible md:visible">
+          <div className="invisible flex items-center justify-center md:visible">
             <Image
-              width="150"
-              height="50"
-              src="/rmdb-logo.svg"
-              alt="rmdb-logo"
+              height="42"
+              width="42"
+              src="/rmdb-logo-small.svg"
+              alt="rmdb-logo-small"
             />
+            <p className="p-4 text-center font-bold text-4xl ">MOVIE-DB</p>
           </div>
           <div className="absolute md:invisible pt-2">
             <Image
