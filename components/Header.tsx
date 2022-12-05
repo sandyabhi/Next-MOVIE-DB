@@ -7,8 +7,8 @@ type Props = {
 };
 
 const Header = ({ setQuery }: Props) => (
-  <div className="stick flex top-0 z-40 w-full h-24 bg-gradient-to-t from-slate-900 to-black">
-    <div className="flex justify-between w-full h-full max-w-7xl m-auto pb-2 items-center px-4">
+  <div className="stick flex top-0 z-40 w-full h-20 bg-gradient-to-t from-slate-900 to-black">
+    <div className="flex justify-between w-full h-full max-w-7xl m-auto items-center px-4">
       <Link href="/">
         <div className="flex items-center cursor-pointer">
           <div className="invisible md:visible">
