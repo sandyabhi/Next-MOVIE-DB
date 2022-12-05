@@ -4,9 +4,10 @@ import SearchInput from "./SearchInput";
 
 type Props = {
   setQuery: React.Dispatch<React.SetStateAction<string>>;
+  req: boolean;
 };
 
-const Header = ({ setQuery }: Props) => (
+const Header = ({ setQuery, req }: Props) => (
   <div className="stick flex top-0 z-40 w-full h-20 bg-gradient-to-r from-slate-900 to-black">
     <div className="flex justify-between w-full h-full max-w-7xl m-auto items-center px-4">
       <Link href="/">
@@ -18,7 +19,9 @@ const Header = ({ setQuery }: Props) => (
               src="/rmdb-logo-small.svg"
               alt="rmdb-logo-small"
             />
-            <p className="p-4 text-center font-bold text-4xl ">MOVIE-DB</p>
+            <p className="p-4 text-center font-bold text-4xl text-white">
+              MOVIE-DB
+            </p>
           </div>
           <div className="absolute md:invisible pt-2">
             <Image
@@ -30,13 +33,11 @@ const Header = ({ setQuery }: Props) => (
           </div>
         </div>
       </Link>
-      {setQuery ? (
+      {setQuery.length && req ? (
         <div className="relative flex items-center">
           <SearchInput setQuery={setQuery} />
         </div>
-      ) : (
-        <></>
-      )}
+      ) : null}
     </div>
   </div>
 );

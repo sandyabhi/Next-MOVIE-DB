@@ -14,6 +14,7 @@ import BreadCrumb from "../components/BreadCrumb";
 import Grid from "../components/Grid";
 import Card from "../components/Card";
 import MovieInfo from "../components/MovieInfo";
+import { useState } from "react";
 
 type Props = {
   movie: Movie;
@@ -21,46 +22,49 @@ type Props = {
   cast: Cast[];
 };
 
-const Movie: NextPage<Props> = ({ movie, directors, cast }) => (
-  <main className="bg-gradient-to-tr from-slate-900 to-black">
-    <Header />
-    <BreadCrumb title={movie.original_title} />
-    <MovieInfo
-      thumbUrl={
-        movie.poster_path
-          ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
-          : "/no_image.jpg"
-      }
-      rating={movie.vote_average}
-      year={movie.release_date.split("-")[0]}
-      backgroundImgUrl={
-        movie.backdrop_path
-          ? IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path
-          : "/no_image.jpg"
-      }
-      title={movie.original_title}
-      summary={movie.overview}
-      directors={directors}
-      time={movie.runtime}
-      budget={movie.budget}
-      revenue={movie.revenue}
-    />
-    <Grid className="p-4 max-w-7xl m-auto" title="Actors">
-      {cast.map((actor) => (
-        <Card
-          key={actor.credit_id}
-          imgUrl={
-            actor.profile_path
-              ? IMAGE_BASE_URL + POSTER_SIZE + actor.profile_path
-              : "/no_image.jpg"
-          }
-          title={actor.name}
-          subtitle={actor.character}
-        />
-      ))}
-    </Grid>
-  </main>
-);
+const Movie: NextPage<Props> = ({ movie, directors, cast }) => {
+  const [query, setQuery] = useState("");
+  return (
+    <main className="bg-gradient-to-tr from-slate-900 to-black">
+      <Header setQuery={setQuery} req={false} />
+      <BreadCrumb title={movie.original_title} />
+      <MovieInfo
+        thumbUrl={
+          movie.poster_path
+            ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
+            : "/no_image.jpg"
+        }
+        rating={movie.vote_average}
+        year={movie.release_date.split("-")[0]}
+        backgroundImgUrl={
+          movie.backdrop_path
+            ? IMAGE_BASE_URL + BACKDROP_SIZE + movie.backdrop_path
+            : "/no_image.jpg"
+        }
+        title={movie.original_title}
+        summary={movie.overview}
+        directors={directors}
+        time={movie.runtime}
+        budget={movie.budget}
+        revenue={movie.revenue}
+      />
+      <Grid className="p-4 max-w-7xl m-auto" title="Actors">
+        {cast.map((actor) => (
+          <Card
+            key={actor.credit_id}
+            imgUrl={
+              actor.profile_path
+                ? IMAGE_BASE_URL + POSTER_SIZE + actor.profile_path
+                : "/no_image.jpg"
+            }
+            title={actor.name}
+            subtitle={actor.character}
+          />
+        ))}
+      </Grid>
+    </main>
+  );
+};
 
 export default Movie;
 

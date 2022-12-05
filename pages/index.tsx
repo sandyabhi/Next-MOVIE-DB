@@ -32,7 +32,7 @@ const Home: NextPage = () => {
       className="relative h-screen overflow-y-scroll bg-gradient-to-bl from-black to-slate-900 text-white"
       onScroll={handleScroll}
     >
-      <Header setQuery={setQuery} />
+      <Header setQuery={setQuery} req />
       {!query && data && data.pages && (
         <Hero
           imgUrl={
